@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container " >
+  <mat-sidenav #drawer class="sidenav bg-light " fixedInViewport="true" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+
+      <mat-card class="example-card">
+        <span class="p-4 col-12 mt-5">
+            <img mat-card-image src="assets/images/me.jpg" alt="Profile" class="w-75 col-12">
+        </span>
+         
+        <mat-card-content>
+         <h6 class="col-12">Youssef Rossamy</h6>
+         <!-- <mat-card-subtitle>Ingenieure d"etude et de developpemnent </mat-card-subtitle>-->
+        </mat-card-content>
+        <mat-card-actions class="row col-12 pt-3 pl-5 ">
+          <a href="https://github.com/Youssef-rsy/Microserices-Application" target="_blank"> <img mat-card-image src="assets/images/github-logo.svg" alt="Photo of a Shiba Inu" class="w-50 col-12 "></a>
+          <a href="https://www.linkedin.com/in/youssef-rossamy-202535137/" target="_blank" > <img mat-card-image src="assets/images/linkedin.svg" alt="Photo of a Shiba Inu" class="w-50 col-12 ml-2"></a>
+        </mat-card-actions>
+      </mat-card>
+    <mat-nav-list class="text-primary" >
+      <a mat-list-item routerLink="/books"  class="h6 mt-3  "><mat-icon class="text-center "  >book</mat-icon> <span class="ml-2">Books</span></a>
+      <a mat-list-item routerLink="/readers"  class="h6 mt-3 "><mat-icon class="text-center"  >people_utline</mat-icon><span class="ml-2">Readers</span></a>
+
+      <a mat-list-item routerLink="/about" class=" bottomNav w-100 "> <mat-icon class="text-center ml-4" color="primary" >help</mat-icon><span class="text-center ml-1">About</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="container row">
+          <span class="col-11">BookReaders-a-Microservices-Application</span>
+          <span  class="col-1 justify-content-end"><mat-icon class="text-center ml-5" (click)="goBack()" >history</mat-icon></span>
+      </div>
+     
+    </mat-toolbar>
+    <div class="container col-12">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
