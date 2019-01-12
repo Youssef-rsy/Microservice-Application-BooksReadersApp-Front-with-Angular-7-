@@ -2,23 +2,9 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Book } from '../book';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatDialogRef } from '@angular/material';
 import { ShowBookComponent } from '../show-book/show-book.component';
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
+import { DeleteBookComponent } from '../delete-book/delete-book.component';
+import { AddBookComponent } from '../add-book/add-book.component';
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
- */
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -36,23 +22,33 @@ export class BooksComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  /*displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;*/
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ShowBookComponent);
+  openDialogShowBook(): void {
+    const dialogRef = this.dialog.open(ShowBookComponent,{panelClass: 'books-readers-dialog-container'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
      //this.animal = result;
     });
   }
+  openDialogDeleteBook(): void {
+    const dialogRef = this.dialog.open(DeleteBookComponent,{panelClass: 'books-readers-dialog-container'});
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     //this.animal = result;
+    });
+  }
+  openDialogAddBook(): void {
+    const dialogRef = this.dialog.open(AddBookComponent,{panelClass: 'books-readers-dialog-container'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     //this.animal = result;
+    });
+  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -66,18 +62,4 @@ export class BooksComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }

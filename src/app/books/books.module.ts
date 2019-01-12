@@ -47,9 +47,11 @@ import {
   MatFormFieldModule,
 } from '@angular/material';
 import { ShowBookComponent } from './show-book/show-book.component';
+import { DeleteBookComponent } from './delete-book/delete-book.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
-  declarations: [BooksComponent, ShowBookComponent],
+  declarations: [BooksComponent, ShowBookComponent, DeleteBookComponent, AddBookComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -64,6 +66,6 @@ import { ShowBookComponent } from './show-book/show-book.component';
     MatDialogModule
 
   ],
-  entryComponents: [ShowBookComponent]
+  entryComponents: [ShowBookComponent,DeleteBookComponent,AddBookComponent]
 })
 export class BooksModule { }
