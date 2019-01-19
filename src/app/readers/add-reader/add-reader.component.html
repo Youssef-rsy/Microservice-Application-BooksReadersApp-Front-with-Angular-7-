@@ -1,23 +1,27 @@
 <mat-card layout="row" layout-align="start center"  class="col-12 p-2 ">
-  <h4 class="my-2 ">Add New Book</h4>
+  <h4 class="my-2 ">Add New Reader</h4>
 </mat-card>
 <div class=" conatainer row col-12 example-container p-4 ">
   
   <mat-form-field class="col-12">
-    <input matInput placeholder="Book Title">
+    <input matInput placeholder="First Name">
   </mat-form-field>
 
   <mat-form-field class="col-12">
-      <input matInput placeholder="Book Author">
+      <input matInput placeholder="Last Name">
     </mat-form-field>
 
+
   <mat-form-field class="col-12">
-    <textarea matInput placeholder="Book Description / resumer "></textarea>
+    <mat-select placeholder="Book List" [formControl]="books" multiple>
+      <mat-option *ngFor="let book of booksList" [value]="book">{{book}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="col-12">
-      <input matInput  type="number" placeholder="Book Page Number">
-    </mat-form-field>
+    <input matInput placeholder="other books : book1;book2;...">
+  </mat-form-field>
+  
     
         <span class="container row col-8 p-2 m-2 ">
         <button mat-flat-button color="primary" class="col-4 ml-2">Save</button>
