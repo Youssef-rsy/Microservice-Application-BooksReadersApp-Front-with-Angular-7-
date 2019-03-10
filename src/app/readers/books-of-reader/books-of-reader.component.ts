@@ -12,11 +12,18 @@ export class BooksOfReaderComponent implements OnInit {
     {bookTitle:"In Death Ground"},
     {bookTitle:"th power of your subcen mind"},
     {bookTitle:"The Curious Incident of the Dog in the Night-Time"},
+    {bookTitle:"In Death Ground"},
+    {bookTitle:"th power of your subcen mind"},
+    {bookTitle:"The Curious Incident of the Dog in the Night-Time"},{bookTitle:"In Death Ground"},
+    {bookTitle:"th power of your subcen mind"},
+    {bookTitle:"The Curious Incident of the Dog in the Night-Time"},
     ];
     displayedColumns: string[] = [ 'bookTitle'];
     dataSource: MatTableDataSource<any>=new MatTableDataSource(this.booksData);
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+
+    public showBookDetail = false;
 
   constructor(
     public dialogRef: MatDialogRef<BooksOfReaderComponent>
@@ -33,5 +40,7 @@ export class BooksOfReaderComponent implements OnInit {
   }
   showBookDetals(selectedBook){
     console.log(selectedBook);
+    this.showBookDetail = true ;
+    console.log(this.showBookDetail);
   }
 }

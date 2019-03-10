@@ -4,6 +4,7 @@ import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatDialogRef } fr
 import { ShowBookComponent } from '../show-book/show-book.component';
 import { DeleteBookComponent } from '../delete-book/delete-book.component';
 import { AddBookComponent } from '../add-book/add-book.component';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-books',
@@ -11,50 +12,52 @@ import { AddBookComponent } from '../add-book/add-book.component';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-   booksData:Book[]=[
-      {bookId:'book1',bookTitle:"In Death Ground",bookAuthor:"Dr. Javier Gleichner",bookDescription:"And I have a tender spot in my heart for cripples and bastards and broken things.",bookPageNumber:10},
-      {bookId:'book1',bookTitle:"th power of your subcen mind",bookAuthor:"Emery Lakin",bookDescription:"description",bookPageNumber:80},
-      {bookId:'book1',bookTitle:"The Curious Incident of the Dog in the Night-Time",bookAuthor:"author",bookDescription:"And I have a tender spot in my heart for cripples and bastards and broken things",bookPageNumber:18},
-      ];
+   booksData:Book[];
 
-  displayedColumns: string[] = [ 'bookTitle', 'bookAuthor', 'bookDescription','bookPageNumber','operation'];
-  dataSource: MatTableDataSource<Book>=new MatTableDataSource(this.booksData);
+  displayedColumns: string[] = [ 'title', 'author', 'description','numberOfPage','operation'];
+  dataSource: MatTableDataSource<Book>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private bookservice :BooksService) {}
 
-  openDialogShowBook(): void {
+  openDialogShowBook(bookId): void {
     const dialogRef = this.dialog.open(ShowBookComponent,{panelClass: 'books-readers-dialog-container'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-     //this.animal = result;
-    });
+    dialogRef.componentInstance.bookId = bookId;
   }
-  openDialogDeleteBook(): void {
-    const dialogRef = this.dialog.open(DeleteBookComponent,{panelClass: 'books-readers-dialog-container'});
-
+  openDialogDeleteBook(bookId:string): void {
+    console.log(bookId);
+    let dialogRef = this.dialog.open(DeleteBookComponent,{panelClass: 'books-readers-dialog-container'});
+    dialogRef.componentInstance.bookId = bookId;
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-     //this.animal = result;
+      this.getData();  
+     
     });
   }
   openDialogAddBook(): void {
     const dialogRef = this.dialog.open(AddBookComponent,{panelClass: 'books-readers-dialog-container'});
-
+   // dialogRef.componentInstance.book = ;
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-     //this.animal = result;
+      console.log('The dialog was closed');  
+      this.getData();  
     });
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.getData();    
   }
-
+  getData() : void{
+    this.bookservice.findAllBook().subscribe((books : any)=>{
+      this.booksData = books;
+      console.log(books);
+      //console.log(this.booksData);
+      this.dataSource =new MatTableDataSource(this.booksData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

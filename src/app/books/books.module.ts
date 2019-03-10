@@ -49,6 +49,8 @@ import {
 import { ShowBookComponent } from './show-book/show-book.component';
 import { DeleteBookComponent } from './delete-book/delete-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BooksComponent, ShowBookComponent, DeleteBookComponent, AddBookComponent],
@@ -63,7 +65,9 @@ import { AddBookComponent } from './add-book/add-book.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    FormsModule
 
   ],
   entryComponents: [ShowBookComponent,DeleteBookComponent,AddBookComponent]

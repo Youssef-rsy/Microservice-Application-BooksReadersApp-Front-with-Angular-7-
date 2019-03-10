@@ -1,3 +1,6 @@
 .asLink{
 cursor: pointer;
 }
+.show{
+    display: block;
+}

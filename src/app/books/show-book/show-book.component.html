@@ -1,28 +1,23 @@
-
-        <mat-card class="example-card container col-12 w-100">
-                <mat-card-header>
+ <div class="container">
+                <mat-card-header class="m-3">
                   <div mat-card-avatar class="example-header-image"><mat-icon>book</mat-icon></div>
-                  <mat-card-title>Rich dad poor dad</mat-card-title>
+                  <mat-card-title>{{displayBook.title}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <div class=" row col-12 py-2 text-capitalize">
                         <div class="col-4 font-weight-bold ">author </div>
-                        <div class="col-8">: <span>Robert T KISOSAKI</span></div>
+                        <div class="col-8">: <span>{{displayBook.author}}</span></div>
                       </div>
                       <div class=" row col-12 py-2 text-capitalize">
                           <div class="col-4 font-weight-bold ">Description </div>
-                          <div class="col-8">: <span>And I have a tender spot in my heart for cripples and bastards and broken things.</span></div>
+                          <div class="col-8">: <span>{{displayBook.description}}</span></div>
                       </div>
                       <div class=" row col-12 py-2 text-capitalize">
                           <div class="col-4 font-weight-bold">Pages </div>
-                          <div class="col-8">: <span> 256 pages</span></div>
+                          <div class="col-8">: <span> {{displayBook.numberOfPage}} pages</span></div>
                       </div>
                 </mat-card-content>
-              </mat-card>
-            
-            <div class="container  col-12 mb-5 mt-2">
+            <div class=" col-12 mb-5 mt-2 p-2">
                 <button (click)="onNoClick()"  mat-raised-button color="accent" class="col-4 float-right" > Close</button>
             </div>  
-        
-
-    
+    </div>

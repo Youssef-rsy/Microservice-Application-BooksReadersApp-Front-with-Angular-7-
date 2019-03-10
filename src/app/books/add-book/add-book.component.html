@@ -1,28 +1,28 @@
 <mat-card layout="row" layout-align="start center"  class="col-12 p-2 ">
-    <h4 class="my-2 ">Add New Book</h4>
+    <h4 class="text-center m-2  ">Add New Book</h4>
 </mat-card>
 <div class=" conatainer row col-12 example-container p-4 ">
-    
+  <form #form="ngForm" (submit)="addBook(form.value)" > 
     <mat-form-field class="col-12">
-      <input matInput placeholder="Book Title">
+      <input matInput placeholder="Book Title" ngModel name="title">
     </mat-form-field>
 
     <mat-form-field class="col-12">
-        <input matInput placeholder="Book Author">
+        <input matInput placeholder="Book Author" ngModel name="author">
       </mat-form-field>
 
     <mat-form-field class="col-12">
-      <textarea matInput placeholder="Book Description / resumer "></textarea>
+      <textarea matInput placeholder="Book Description / resumer " ngModel name="description"></textarea>
     </mat-form-field>
   
     <mat-form-field class="col-12">
-        <input matInput  type="number" placeholder="Book Page Number">
+        <input matInput  type="number" placeholder="Book Page Number" ngModel name="numberOfPage">
       </mat-form-field>
       
           <span class="container row col-8 p-2 m-2 ">
           <button mat-flat-button color="primary" class="col-4 ml-2">Save</button>
           <button mat-flat-button color="accent" class="col-4 ml-2">Reset</button>
           </span>
-
+</form> 
   </div>
   

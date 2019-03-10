@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Book } from '../book';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-show-book',
@@ -8,7 +9,10 @@ import { Book } from '../book';
   styleUrls: ['./show-book.component.css']
 })
 export class ShowBookComponent implements OnInit {
-  constructor(
+  bookId:string;
+  displayBook:Book;
+
+  constructor(private bookService: BooksService,
     public dialogRef: MatDialogRef<ShowBookComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: Book
   ) {}
@@ -17,7 +21,13 @@ export class ShowBookComponent implements OnInit {
     this.dialogRef.close();
   }
 
+
+
   ngOnInit() {
+    this.bookService.getBook(this.bookId).subscribe(data =>{
+      this.displayBook = data;
+    }
+    );
   }
 
 }

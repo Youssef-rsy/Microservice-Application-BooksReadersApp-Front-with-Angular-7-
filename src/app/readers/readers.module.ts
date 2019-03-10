@@ -7,7 +7,7 @@ import { ShowReaderComponent } from './show-reader/show-reader.component';
 import { DeleteReaderComponent } from './delete-reader/delete-reader.component';
 import { BooksOfReaderComponent } from './books-of-reader/books-of-reader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [ReadersComponent, AddReaderComponent, ShowReaderComponent, DeleteReaderComponent, BooksOfReaderComponent],
   imports: [
@@ -24,8 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    ScrollDispatchModule
   ],
   entryComponents: [ReadersComponent, AddReaderComponent, ShowReaderComponent, DeleteReaderComponent, BooksOfReaderComponent]
 })
