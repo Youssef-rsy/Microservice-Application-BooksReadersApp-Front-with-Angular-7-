@@ -1,6 +1,6 @@
 export interface Reader{
     readerId:string;
-    readerFirstName:string;
-    readerLastName:string;
-    readerListOfBook:string[];
+    firstName:string;
+    lastName:string;
+    listOfBook:string[];
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Renderer2, ElementRef } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Reader } from '../reader';
 import { FormControl } from '@angular/forms';
+import { ReadersService } from '../readers.service';
 
 @Component({
   selector: 'app-show-reader',
@@ -9,13 +10,13 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./show-reader.component.css']
 })
 export class ShowReaderComponent implements OnInit {
-
-  books = new FormControl();
-  booksList: string[] = ['book 1', 'book 2', 'book 3', 'book 4', 'book 5', 'book 6'];
-  block1;
+  readerId:string;
+  reader:Reader;
+  
 
   showeBook;
   constructor(
+    private readersService:ReadersService,
     private renderer:Renderer2,
     public dialogRef: MatDialogRef<ShowReaderComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: Reader
@@ -26,11 +27,10 @@ export class ShowReaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.showeBook){
-
-    }else{
-
-    }
+   this.readersService.getReader(this.readerId).subscribe(data=>{
+      this.reader = data;
+      console.log(this.reader);
+   });
   }
 
   onChange(book){

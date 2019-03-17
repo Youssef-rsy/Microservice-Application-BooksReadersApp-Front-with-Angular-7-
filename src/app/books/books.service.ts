@@ -45,12 +45,16 @@ export class BooksService {
   };
 
 	public findBookByTitle(title:string){ 
-
+    let url = BOOK_SERVICE_URL+"/title/"+title;
+    return this.http.get<Book>(url);
   };
 
 	public findBookByAuthor(author:string){  
-
+    let url = BOOK_SERVICE_URL+"/author/"+author;
+    return this.http.get<Book>(url);
   };
+
+  
 	
 
 

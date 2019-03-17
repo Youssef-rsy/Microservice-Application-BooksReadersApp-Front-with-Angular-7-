@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Reader } from '../reader';
+import { ReadersService } from '../readers.service';
 
 @Component({
   selector: 'app-delete-reader',
@@ -8,13 +9,21 @@ import { Reader } from '../reader';
   styleUrls: ['./delete-reader.component.css']
 })
 export class DeleteReaderComponent implements OnInit {
-
-  constructor(
+   readerId:string;
+   firstName:string;
+   lastName:string;
+  constructor(private readerService:ReadersService,
     public dialogRef: MatDialogRef<DeleteReaderComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: Reader
   ) {}
 
-  onNoClick(): void {
+  delete():void{
+    console.log(this.readerId);
+    this.readerService.deleteReader(this.readerId).subscribe();
+    this.dialogRef.close();
+  }
+
+  cancel():void{
     this.dialogRef.close();
   }
 

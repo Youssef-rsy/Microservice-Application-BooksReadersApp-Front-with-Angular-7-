@@ -8,9 +8,11 @@ import { DeleteReaderComponent } from './delete-reader/delete-reader.component';
 import { BooksOfReaderComponent } from './books-of-reader/books-of-reader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [ReadersComponent, AddReaderComponent, ShowReaderComponent, DeleteReaderComponent, BooksOfReaderComponent],
   imports: [
+    HttpClientModule,
     CommonModule,
     MatButtonModule,
     MatCardModule,
@@ -25,7 +27,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
   ],
   entryComponents: [ReadersComponent, AddReaderComponent, ShowReaderComponent, DeleteReaderComponent, BooksOfReaderComponent]
 })

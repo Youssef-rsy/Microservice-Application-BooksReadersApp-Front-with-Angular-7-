@@ -2,6 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Reader } from '../reader';
 import { FormControl } from '@angular/forms';
+import { ReadersService } from '../readers.service';
+import { BooksService } from '../../books/books.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-reader',
@@ -11,9 +15,9 @@ import { FormControl } from '@angular/forms';
 export class AddReaderComponent implements OnInit {
 
   books = new FormControl();
-  booksList: string[] = ['book 1', 'book 2', 'book 3', 'book 4', 'book 5', 'book 6'];
+  booksList: String[];// = ['book 1', 'book 2', 'book 3', 'book 4', 'book 5', 'book 6'];
   
-  constructor(
+  constructor(private bookService:BooksService,private readerService:ReadersService,
     public dialogRef: MatDialogRef<AddReaderComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: Reader
   ) {}
@@ -23,5 +27,26 @@ export class AddReaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bookService.findAllBook().subscribe((data)=>{
+      let books:any = data;
+     
+      this.booksList = new Array<String>(books.length);
+      console.log("##################");
+      for(var i=0;i<books.length;i++){
+        //this.booksList[i]="ok";
+        //console.log(books[i]['title']);
+        this.booksList[i] = books[i]['title'].toString(); 
+        console.log(this.booksList[i] = " * "+  books[i]['title'].toString());
+      }
+      console.log("##################");
+      /*books.forEach(book=> {
+        this.booksList.concat(book);
+    });*/
+    })
+    
+  }
+  addReader(reader){
+console.log(reader);
+    this.readerService.addReader(reader).subscribe();
   }
 }

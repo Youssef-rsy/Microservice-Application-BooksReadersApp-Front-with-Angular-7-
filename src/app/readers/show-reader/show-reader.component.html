@@ -7,23 +7,23 @@
           <mat-card-content class="ml-3">
               <div class=" row col-12 py-2 text-capitalize">
                   <div class="col-4 font-weight-bold ">First Name </div>
-                  <div class="col-8">: <span class="ml-2"> ROSSAMY</span></div>
+                  <div class="col-8">: <span class="ml-2"> {{reader.firstName}}</span></div>
                 </div>
                 <div class=" row col-12 py-2 text-capitalize">
                     <div class="col-4 font-weight-bold ">Last Name </div>
-                    <div class="col-8">: <span class="ml-2"> Youssef</span></div>
+                    <div class="col-8">: <span class="ml-2"> {{reader.lastName}}</span></div>
                 </div>
                 <div class=" row col-12 py-2 text-capitalize w-100">
                         <h4 mat-subheader><em> List of Readed Books</em></h4>
                     <mat-list role="list" class="make-scrollable">
                         
-                        <mat-list-item *ngFor="let book of booksList" >{{book}}</mat-list-item>
+                        <mat-list-item *ngFor="let book of reader.listOfBook" >{{book}}</mat-list-item>
                       </mat-list>
                 </div>
           </mat-card-content>
   </div>
   
-  <div class="container  col-12 mb-5 mt-2">
-      <button (click)="onNoClick()"  mat-raised-button color="accent" class="col-4 float-right" > Close</button>
+  <div class="container  col-12 text-center mb-5 mt-2">
+      <button (click)="onNoClick()"  mat-raised-button color="accent" class="col-4 " > Close</button>
   </div> 
 </div>
