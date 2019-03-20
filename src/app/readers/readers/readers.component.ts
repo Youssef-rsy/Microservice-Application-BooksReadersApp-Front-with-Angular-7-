@@ -60,9 +60,7 @@ openDialogReaderBooks(booksReaded): void {
 }
 
 ngOnInit() {
-  
   this.getData();
- 
 }
 
 getData(){
