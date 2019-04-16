@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../books/book';
 
-let READER_SERVICE_URL:string = "http://localhost:8888/readers/reader";
+let READER_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/readers/reader";
 
 @Injectable({
   providedIn: 'root'
