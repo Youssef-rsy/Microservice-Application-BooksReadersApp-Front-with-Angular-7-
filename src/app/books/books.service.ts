@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Book } from './book';
 import { Observable } from 'rxjs';
 
-let BOOK_SERVICE_URL:string = "http://localhost:8888/books/book";
+let BOOK_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/books/book";
 
 @Injectable({
   providedIn: 'root'
