@@ -3,26 +3,21 @@
 </mat-card>
 <div class=" conatainer row col-12 example-container p-4">
   <form #readerForm="ngForm" (submit)="addReader(readerForm.value)">
-  <mat-form-field class="col-12">
-    <input matInput placeholder="First Name" ngModel name="firstName">
-  </mat-form-field>
-
-  <mat-form-field class="col-12">
-      <input matInput placeholder="Last Name" ngModel name="lastName">
-    </mat-form-field>
-
-
-  <mat-form-field class="col-12" >
-    <mat-select placeholder="Book List" [formControl]="books"  ngModel multiple name="listOfBook">
-      <mat-option *ngFor="let book of booksList" [value]="book"></mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <!--<mat-form-field class="col-12">
-    <input matInput placeholder="other books : book1;book2;...">
-  </mat-form-field>-->
-  
     
+        <mat-form-field class="col-12">
+          <input matInput placeholder="First Name" ngModel name="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+            <input matInput placeholder="Last Name" ngModel name="lastName">
+          </mat-form-field>
+
+        <mat-form-field class="col-12" >
+          <mat-select placeholder="Book List" multiple  ngModel name="listOfBook">
+            <mat-option *ngFor="let book of booksList" [value]="book">{{book}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+          
         <span class="container row col-8 p-2 m-2 ">
           <button mat-flat-button color="primary" class="col-4 ml-2">Save</button>
           <button mat-flat-button color="accent" class="col-4 ml-2">Reset</button>
