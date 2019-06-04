@@ -1,0 +1,28 @@
+<div class="container row col-12 w-100 h-95">
+  <section class="col-6  m-auto">
+    <!-- Default form login -->
+    <form class="needs-validation container text-center border border-light p-5 " novalidate>
+      <div class="form-row">
+        <div class="col-12">
+          <p class="h3 mb-4 ">Sign in</p>
+          <span *ngIf="unaithorize">
+            <h6 class="bg-danger text-light">Authentication Failed : Please Verify Your Login/Password </h6>
+          </span>
+        </div>
+        <!-- Email -->
+        <div class="col-12">
+          <input type="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username" required="required">
+        </div>
+        <!-- Password -->
+        <div class="col-12">
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required="required">
+        </div>
+        <!-- Sign in button -->
+        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+      </div>
+    </form>
+  </section>
+</div>
+<footer class="h5 col-12 text-right">
+  <span class="font-weight-bold">Youssef ROSSAMY</span>
+</footer>

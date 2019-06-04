@@ -18,11 +18,13 @@ import { MatTableModule } from '@angular/material';
 import { BooksModule } from './books/books.module';
 import { ReadersModule } from './readers/readers.module';
 import { AboutModule } from './about/about.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SkeletonComponent,
+    LoginComponent,
    
   ],
   imports: [
