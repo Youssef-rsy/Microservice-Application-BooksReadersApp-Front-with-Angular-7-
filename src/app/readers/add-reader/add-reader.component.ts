@@ -18,8 +18,8 @@ export class AddReaderComponent implements OnInit {
   booksList: String[];// = ['book 1', 'book 2', 'book 3', 'book 4', 'book 5', 'book 6'];
   
   constructor(private bookService:BooksService,private readerService:ReadersService,
-    public dialogRef: MatDialogRef<AddReaderComponent>
-    ,@Inject(MAT_DIALOG_DATA) public data: Reader
+              public dialogRef: MatDialogRef<AddReaderComponent> ,
+              @Inject(MAT_DIALOG_DATA) public data: Reader
   ) {}
 
   onNoClick(): void {
@@ -31,22 +31,14 @@ export class AddReaderComponent implements OnInit {
       let books:any = data;
      
       this.booksList = new Array<String>(books.length);
-      console.log("##################");
       for(var i=0;i<books.length;i++){
-        //this.booksList[i]="ok";
-        //console.log(books[i]['title']);
         this.booksList[i] = books[i]['title'].toString(); 
-        console.log(this.booksList[i] = " * "+  books[i]['title'].toString());
       }
-      console.log("##################");
-      /*books.forEach(book=> {
-        this.booksList.concat(book);
-    });*/
     })
     
   }
   addReader(reader){
-console.log(reader);
+    console.dir(reader);
     this.readerService.addReader(reader).subscribe();
   }
 }

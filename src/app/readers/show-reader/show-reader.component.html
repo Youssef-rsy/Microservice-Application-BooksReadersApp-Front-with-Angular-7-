@@ -1,11 +1,11 @@
-<div class=" container row ">
+<div class=" container row col-12 ">
   <div class="col-12 p-2 w-100 " >
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><mat-icon>perm_identity</mat-icon></div>
             <mat-card-title>Reader Information </mat-card-title>
           </mat-card-header>
           <mat-card-content class="ml-3">
-              <div class=" row col-12 py-2 text-capitalize">
+                <div class=" row col-12 py-2 text-capitalize">
                   <div class="col-4 font-weight-bold ">First Name </div>
                   <div class="col-8">: <span class="ml-2"> {{reader.firstName}}</span></div>
                 </div>
@@ -14,16 +14,15 @@
                     <div class="col-8">: <span class="ml-2"> {{reader.lastName}}</span></div>
                 </div>
                 <div class=" row col-12 py-2 text-capitalize w-100">
-                        <h4 mat-subheader><em> List of Readed Books</em></h4>
-                    <mat-list role="list" class="make-scrollable">
-                        
-                        <mat-list-item *ngFor="let book of reader.listOfBook" >{{book}}</mat-list-item>
-                      </mat-list>
+                    <h6 mat-subheader class="col-12"><em> List of Readed Books</em></h6>
+                    <ul class="list-group list-group-flush col-12" *ngFor="let book of reader.listOfBook">
+                        <li class="list-group-item">{{book}}</li>
+                      </ul>
                 </div>
           </mat-card-content>
   </div>
   
   <div class="container  col-12 text-center mb-5 mt-2">
-      <button (click)="onNoClick()"  mat-raised-button color="accent" class="col-4 " > Close</button>
+      <button (click)="onNoClick()"  mat-raised-button color="accent" class="col-4 " >Close</button>
   </div> 
 </div>

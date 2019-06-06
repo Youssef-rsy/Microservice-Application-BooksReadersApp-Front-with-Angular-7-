@@ -1,7 +1,7 @@
 <div class="container row col-12 w-100 h-95">
   <section class="col-6  m-auto">
     <!-- Default form login -->
-    <form class="needs-validation container text-center border border-light p-5 " novalidate>
+    <form #auth="ngForm" (ngSubmit) ="authentification(auth.value)" class="needs-validation container text-center border border-light p-5 " novalidate>
       <div class="form-row">
         <div class="col-12">
           <p class="h3 mb-4 ">Sign in</p>
@@ -11,11 +11,11 @@
         </div>
         <!-- Email -->
         <div class="col-12">
-          <input type="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username" required="required">
+          <input type="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username" required="required"  name="username" ngModel >
         </div>
         <!-- Password -->
         <div class="col-12">
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required="required">
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required="required" name="password" ngModel>
         </div>
         <!-- Sign in button -->
         <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>

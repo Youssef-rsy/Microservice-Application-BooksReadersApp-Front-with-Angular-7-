@@ -27,7 +27,8 @@ constructor(public dialog: MatDialog,private readersServices:ReadersService) {}
 
 
 openDialogShowReader(readerId:string): void {
-  const dialogRef = this.dialog.open(ShowReaderComponent,{panelClass: 'books-readers-dialog-container'});
+  const dialogRef = this.dialog.open(ShowReaderComponent,{ height: '400px',
+  width: '600px',panelClass: 'books-readers-dialog-container'});
   dialogRef.componentInstance.readerId = readerId;
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');

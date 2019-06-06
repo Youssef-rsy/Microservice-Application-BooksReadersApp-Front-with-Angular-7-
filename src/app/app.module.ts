@@ -19,7 +19,6 @@ import { BooksModule } from './books/books.module';
 import { ReadersModule } from './readers/readers.module';
 import { AboutModule } from './about/about.module';
 import { LoginComponent } from './login/login.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +27,7 @@ import { LoginComponent } from './login/login.component';
    
   ],
   imports: [
-    
+    FormsModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -36,7 +35,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     BooksModule,
     ReadersModule,
-    AboutModule
+    AboutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
