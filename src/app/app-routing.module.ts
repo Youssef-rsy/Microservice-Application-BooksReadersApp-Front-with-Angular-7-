@@ -5,12 +5,18 @@ import { BooksComponent } from './books/books/books.component';
 //import { AboutMeComponent } from './about/about-me/about-me.component';
 import { ReadersComponent } from './readers/readers/readers.component';
 import { AboutAppComponent } from './about/about-app/about-app.component';
+import { LoginComponent } from './login/login.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 const appRoutes : Routes = [
-  { path: '',   redirectTo: 'about', pathMatch: 'full' },
-  { path: 'about', component: AboutAppComponent },
-  { path:'books' , component : BooksComponent},
-  { path:'readers' , component : ReadersComponent},
+  { path: '',   redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'booksReadersApp', component: SkeletonComponent , children:[
+    { path: 'about', component: AboutAppComponent },
+    { path:'books' , component : BooksComponent},
+    { path:'readers' , component : ReadersComponent},
+  ] },
+ 
 ];
 @NgModule({
   declarations: [],

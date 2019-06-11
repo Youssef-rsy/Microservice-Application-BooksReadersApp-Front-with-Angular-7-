@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
    
   ],
   imports: [
+  
     FormsModule,
     AppRoutingModule,
     BrowserModule,
@@ -35,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     BooksModule,
     ReadersModule,
-    AboutModule,
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
