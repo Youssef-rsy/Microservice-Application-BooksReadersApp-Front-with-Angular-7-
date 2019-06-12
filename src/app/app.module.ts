@@ -40,17 +40,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     BooksModule,
     ReadersModule,
     AboutModule,
-    JwtModule.forRoot({
-      config: {
-        //This function is used to customize how JwtModule gets the JWT access token from the local storage.
-        tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('token');},
-        //In this array, you can add any domains that are allowed to receive the JWT like public APIs.
-        whitelistedDomains: ['https://proxymicroservice.herokuapp.com/'],
-        //In this array, you can add routes that are not allowed to receive the JWT token.
-        blacklistedRoutes: ['https://proxymicroservice.herokuapp.com/login']
-      }
-    })
+    JwtModule
   ],
   providers: [],
   bootstrap: [AppComponent]
