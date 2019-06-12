@@ -6,7 +6,6 @@ import { DeleteReaderComponent } from '../delete-reader/delete-reader.component'
 import { AddReaderComponent } from '../add-reader/add-reader.component';
 import { BooksOfReaderComponent } from '../books-of-reader/books-of-reader.component';
 import { ReadersService } from '../readers.service';
-import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-readers',
@@ -24,7 +23,6 @@ dataSource: MatTableDataSource<Reader>;
 @ViewChild(MatSort) sort: MatSort;
 
 constructor(public dialog: MatDialog,private readersServices:ReadersService) {}
-
 
 openDialogShowReader(readerId:string): void {
   const dialogRef = this.dialog.open(ShowReaderComponent,{ height: '400px',
@@ -61,7 +59,7 @@ openDialogReaderBooks(booksReaded): void {
 }
 
 ngOnInit() {
-  this.getData();
+    this.getData();    
 }
 
 getData(){

@@ -5,6 +5,8 @@ import { ShowBookComponent } from '../show-book/show-book.component';
 import { DeleteBookComponent } from '../delete-book/delete-book.component';
 import { AddBookComponent } from '../add-book/add-book.component';
 import { BooksService } from '../books.service';
+import { SharedDataService } from '../../utils/shared-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -13,6 +15,7 @@ import { BooksService } from '../books.service';
 })
 export class BooksComponent implements OnInit {
    booksData:Book[];
+   ROLE:string;
 
   displayedColumns: string[] = [ 'title', 'author', 'description','numberOfPage','operation'];
   dataSource: MatTableDataSource<Book>;
@@ -20,7 +23,7 @@ export class BooksComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog,private bookservice :BooksService) {}
+  constructor(public dialog: MatDialog,private bookservice :BooksService,private sharedData:SharedDataService ) {}
 
   openDialogShowBook(bookId): void {
     const dialogRef = this.dialog.open(ShowBookComponent,{panelClass: 'books-readers-dialog-container'});
@@ -46,7 +49,10 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getData();    
+      this.getData();    
+  }
+  isAccredited():boolean{ 
+    return this.sharedData.userAccredited();
   }
   getData() : void{
     this.bookservice.findAllBook().subscribe((books : any)=>{

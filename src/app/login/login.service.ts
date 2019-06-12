@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { User } from './user';
 
-let AUTHENTIFICATION_SERVICE_LOGIN_URL:string = "http://localhost:8888/login";//"https://proxymicroservice.herokuapp.com/login";
-let AUTHENTIFICATION_SERVICE_LOGOUT_URL:string = "http://localhost:8888/logout";
+let AUTHENTIFICATION_SERVICE_LOGIN_URL:string = "https://proxymicroservice.herokuapp.com/login";
+let AUTHENTIFICATION_SERVICE_LOGOUT_URL:string = "https://proxymicroservice.herokuapp.com/logout";
 @Injectable({
   providedIn: 'root'
 })

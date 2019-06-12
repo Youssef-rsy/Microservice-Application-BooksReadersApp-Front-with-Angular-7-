@@ -18,16 +18,19 @@ import { MatTableModule } from '@angular/material';
 import { BooksModule } from './books/books.module';
 import { ReadersModule } from './readers/readers.module';
 import { AboutModule } from './about/about.module';
+
 import { LoginComponent } from './login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
     SkeletonComponent,
     LoginComponent,
-   
+
   ],
   imports: [
-  
+
     FormsModule,
     AppRoutingModule,
     BrowserModule,
@@ -36,7 +39,18 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     BooksModule,
     ReadersModule,
-    AboutModule
+    AboutModule,
+    JwtModule.forRoot({
+      config: {
+        //This function is used to customize how JwtModule gets the JWT access token from the local storage.
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('token');},
+        //In this array, you can add any domains that are allowed to receive the JWT like public APIs.
+        whitelistedDomains: ['https://proxymicroservice.herokuapp.com/'],
+        //In this array, you can add routes that are not allowed to receive the JWT token.
+        blacklistedRoutes: ['https://proxymicroservice.herokuapp.com/login']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
