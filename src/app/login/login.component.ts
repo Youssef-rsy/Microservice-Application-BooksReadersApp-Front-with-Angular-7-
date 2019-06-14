@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.service.logIn(val).subscribe(
       resp=>{
       this.sharedData.saveToken(resp.headers.get('Authorization'));
-       this.router.navigateByUrl('/booksReadersApp/about');
+       this.router.navigateByUrl('/booksReadersApp/home');
       },
       error=>{
         this.unaithorize=true;

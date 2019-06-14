@@ -1,18 +1,11 @@
 <div class="container col-12 pt-3">
   <div id="deffApp" class="row col-12 ">
-    <span id="deffAppTitle" class="p-2 title">
-        Définition de l’application et son but :
-    </span>
-    <div id="deffAppContent" class="col-12 content">
-        Cette application n’a pas de sémantique elle est à titre éducatif.
-        c’est une applications qui permet de gère la relation d’un lecteur avec  ses bouquin ou les bouquin qui a lie, dans on trouve la gestion des bouquin ou n peux ajouter un bouquin le modifier afficher  la listes des bouquins qui existe dans notre bases de données ainsi les supprimer , elle gère aussi les lecteur on les ajoutant,.. et affiche aussi l List des bouquins ns qui on lu avec la possibilité d’affichage des détails
-        
-    </div>
+    
   </div>
   <div id="architecture" class="row col-12">
       <span id="architectureTitle" class="p-2 title">
          Architechture 
-        </span>
+      </span>
       <div id="architectureContent" class="col-12 content ">
           Cette application il est en Microservice en architecture  
           et il est diviser en deux partie :<br/>
@@ -21,12 +14,12 @@
           La partie Back - Serveur Application - : ou le métier de l’application cette partie est composée de :
           <br/>
       <ul>
-        <li>Service Proxy : il est la port de l’application ainsi il permet de filtrer les requêtes envoi a l’application et de gère l’orchestration entre les microservice</li>
+        <li>Service Proxy : il est la port de l’application ainsi il permet de filtrer les requêtes envoié a l’application et de gère l’orchestration entre les microservices ainsi il assure la securite de l'application</li>
         <li>Service de registration : il permet d’enregistrer l’état des microservices ainsi il donne une vue sur le nombre d’instance de chaque service et leur état  </li>
         <li>Serivce de Configuration : elle permet d’externaliser la configuration des Microservice ainsi de la centraliser </li>
         <li>Service de tracage : il permet de tracer l’ensemble des appelle entre les différent Microservice </li>
-        <li>Service Book : ou le métier des bouquin est définie </li>
-        <li>Service Readers : ou le métier de lecteur est définie et gère </li>
+        <li>Service Book :  pour la gestion des bouquins  </li>
+        <li>Service Readers : pour la gestion des lecteurs</li>
       </ul>
 
         <span id="architectureImage" class="d-flex justify-content-center">
@@ -34,27 +27,83 @@
         </span>
       </div>
   </div>
+ 
   <div id="technicalVue" class="row">
       <span id="technicalVueTitle "  class="p-2 title">Vue Technique</span>
+
       <div id="technicalVueContent" class="col-12 content ml-2">
           L’application Serveur est compose de : <br/> <br/>
-          <span class="bg-danger text-white my-2">(1)</span>  Le service de configuration :ce service il permet de centraliser la configuration des différents microservice dans un répertoire par le billet de son fichier de properties 
-          <br/>
-          <span class="bg-danger text-white my-2">(2)</span>Le service Registration : est une application spring boot qui implémente la bibliothèque eureka de netflix qui a pour rôle la localisation d'instances de services  . ce service est le service eureka client et  c’est lui qui permet d’enregistrer les autres service (les service client <strong>eureka</strong> ) 
-          <br/>
-          <span class="bg-danger text-white my-2">(3-4)</span>Le service Book et le service Reades : il représente le corps  métier de notre application , ou chaque service et crée en spring boot avec du spring data pour la persistance de donnes, avec <strong>hystrix </strong> qui implement le pattern du  « circuit Breaker » qui permet  d'empêcher ou bien contourner  le blocage d'un service voire essayer de prévenir la faille, La bibliotheque <strong>feign </strong>pour faclite les appelles entre les webService , chaos testing avec la bibliothèque <strong>chaos Monkey</strong>
-          <br/>
-          <span class="bg-danger text-white my-2">(5)</span>Le service Proxy : est une application spring boot qui implémente la  bibliothèque <strong>ZUUL</strong> de netflix  qui est aussi dit « point d'entrée » car il représente le point d’entrer de tout l’architecture et elle permet de faire le filtrage aussi , il est aussi un service client eureka
-          <br/>
-          <span class="bg-danger text-white my-2">(6)</span>Le service de tracage : est une application spring boot qui implémente la bibliothèque <strong>Zipkin</strong> elle permet d’offrir  les fonctionnalités du « distributed  tracing »ou appelle aussi le tracage des requêtes, ce service comme sont nom l’indique il permet de tracer les requêtes de tout l’application en general c’est en affectant un traceId lor du début de la requête et on passent de service a un autre on ajout a la requêtes plus que le traceId un spanID  qui dépondra du service et non pas de la requête
-          <br/>
+
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Service de configuration</h5>
+                      <p class="card-text"> ce service il permet de centraliser la configuration des différents microservice dans un répertoire par le billet de son fichier de properties </p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Service Registration</h5>
+                      <p class="card-text"> est une application spring boot qui implémente la bibliothèque eureka de netflix qui a pour rôle la localisation d'instances de services  . ce service est le service eureka client et  c’est lui qui permet d’enregistrer les autres service (les service client <strong>eureka</strong> ) </p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div> 
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Service Proxy</h5>
+                      <p class="card-text"> est une application spring boot qui implémente la  bibliothèque <strong>ZUUL</strong> de netflix  qui est aussi dit « point d'entrée » car il représente le point d’entrer de tout l’architecture et elle permet de faire le filtrage aussi , il est aussi un service client eureka</p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">les Services Books & Readers</h5>
+                      <p class="card-text"> l représente le corps  métier de notre application , ou chaque service et crée en spring boot avec du spring data pour la persistance de donnes, avec <strong>hystrix </strong> qui implement le pattern du  « circuit Breaker » qui permet  d'empêcher ou bien contourner  le blocage d'un service voire essayer de prévenir la faille, La bibliotheque <strong>feign </strong>pour faclite les appelles entre les webService , chaos testing avec la bibliothèque <strong>chaos Monkey</strong></p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Service de Tracage</h5>
+                      <p class="card-text"> est une application spring boot qui implémente la bibliothèque <strong>Zipkin</strong> elle permet d’offrir  les fonctionnalités du « distributed  tracing »ou appelle aussi le tracage des requêtes, ce service comme sont nom l’indique il permet de tracer les requêtes de tout l’application en general c’est en affectant un traceId lor du début de la requête et on passent de service a un autre on ajout a la requêtes plus que le traceId un spanID  qui dépondra du service et non pas de la requête</p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        
           L’application Client : <br/> <br/>
-          <span class="bg-danger text-white my-2">(7)</span>Angular : est la partie front de l’application en version 7 il assure la communication front-back ainsi la présentation de l’application 
-          <br/>
-          <span class="bg-danger text-white my-2">(8)</span>Angular material dans ca 7 éme version est utiliser pour l’IHM
-          <br/>
-          <span class="bg-danger text-white my-2">(9)</span>Boostrap 4 aussi pour l’IHM pour  le renforcement d’angular material
-          <br/>
+
+          <div  class=" col-12 m-2">
+              <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Partie Front</h5>
+                      <p class="card-text">  est la partie front de l’application en version 7 il assure la communication front-back ainsi la présentation de l’application</p>
+                      <a href="#" class="btn btn-primary" target="_blank">Git-Repository</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
+         
       </div>
   </div>
   <div id="servicePorts" class="row">
@@ -68,34 +117,44 @@
                   <thead>
                     <tr>
                       <th scope="col">Service</th>
-                      <th scope="col">Port</th>
+                      <th scope="col">Url</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       
                       <td >Service Registration eureka </td>
-                      <th >8761</th>
+                      <th >
+                        <a href="https://serviceregistry.herokuapp.com/" target="_blank">https://serviceregistry.herokuapp.com</a>
+                      </th>
                     </tr>
                     <tr>
                       <td >Service Proxy </td>
-                      <th >8888</th>
+                      <th >
+                         <a href="https://proxymicroservice.herokuapp.com/" target="_blank">https://proxymicroservice.herokuapp.com</a>
+                        </th>
                     </tr>
                     <tr>
                       <td  >Service Book </td>
-                     <th >8090</th>
+                      <th >
+                          <a href="https://booksservice.herokuapp.com/" target="_blank" >https://booksservice.herokuapp.com</a>
+                         </th>
                     </tr>
                     <tr>
-                      <td  >Service Reader</td>
-                      <th >8070</th>
+                      <td >Service Reader</td>
+                      <th >
+                          <a href="https://readersservice.herokuapp.com/" target="_blank">https://readersservice.herokuapp.com</a>
+                         </th>
                     </tr>
                     <tr>
                       <td  >Service Configuration</td>
-                       <th>8899</th>
+                      <th >
+                          <a href=" https://configurationservice.herokuapp.com/" target="_blank"> https://configurationservice.herokuapp.com</a>
+                         </th>
                     </tr>
                     <tr>
-                      <td  >Service Tracing Zipkin</td>
-                      <th >9411</th>
+                      <td>Service Tracing Zipkin</td>
+                      <th>9411</th>
                     </tr>
                   </tbody>
                 </table>
@@ -104,9 +163,11 @@
      
   </div>
   <div id="additionalInformation" class="row">
-      <span id="additionalInformationTitle"></span>
+      <span id="additionalInformationTitle">les differents technologie/framework implementer/utiliser lors du developement</span>
       <div id="additionalInformationContent">
-  
+        <span>
+          
+        </span>
       </div>
   </div>
 

@@ -21,12 +21,14 @@ import { AboutModule } from './about/about.module';
 
 import { LoginComponent } from './login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SkeletonComponent,
     LoginComponent,
+    HomeComponent,
 
   ],
   imports: [
