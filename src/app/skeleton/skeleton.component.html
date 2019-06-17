@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container " >
-  <mat-sidenav #drawer class="sidenav bg-light " fixedInViewport="true" 
+  <mat-sidenav #drawer class="sidenav bg-light" fixedInViewport="true" 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
@@ -22,7 +22,10 @@
       <a mat-list-item routerLink="/booksReadersApp/books"  class="h6 mt-3  "><mat-icon class="text-center "  >book</mat-icon> <span class="ml-2">Books</span></a>
       <a mat-list-item routerLink="/booksReadersApp/readers"  class="h6 mt-3 "><mat-icon class="text-center"  >people_utline</mat-icon><span class="ml-2">Readers</span></a>
 
-      <a mat-list-item routerLink="/booksReadersApp/about" class=" bottomNav w-100 "> <mat-icon class="text-center ml-4" color="primary" >help</mat-icon><span class="text-center ml-1">About</span></a>
+      <a mat-list-item routerLink="/booksReadersApp/about" class=" bottomNav  ">
+         <mat-icon class="text-center" color="primary" >help</mat-icon>
+         <span class="text-center">About</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content >
