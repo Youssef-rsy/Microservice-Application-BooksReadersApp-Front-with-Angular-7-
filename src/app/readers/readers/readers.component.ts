@@ -6,6 +6,7 @@ import { DeleteReaderComponent } from '../delete-reader/delete-reader.component'
 import { AddReaderComponent } from '../add-reader/add-reader.component';
 import { BooksOfReaderComponent } from '../books-of-reader/books-of-reader.component';
 import { ReadersService } from '../readers.service';
+import { SharedDataService } from 'src/app/utils/shared-data.service';
 
 @Component({
   selector: 'app-readers',
@@ -22,7 +23,7 @@ dataSource: MatTableDataSource<Reader>;
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
-constructor(public dialog: MatDialog,private readersServices:ReadersService) {}
+constructor(public dialog: MatDialog,private readersServices:ReadersService,private sharedData:SharedDataService ) {}
 
 openDialogShowReader(readerId:string): void {
   const dialogRef = this.dialog.open(ShowReaderComponent,{ height: '400px',
@@ -78,6 +79,10 @@ applyFilter(filterValue: string) {
   if (this.dataSource.paginator) {
     this.dataSource.paginator.firstPage();
   }
+}
+
+isAccredited():boolean{ 
+  return this.sharedData.userAccredited();
 }
 
 }
