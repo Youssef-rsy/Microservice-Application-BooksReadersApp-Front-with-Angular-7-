@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Book } from './book';
 import { Observable } from 'rxjs';
+import { SharedDataService } from '../utils/shared-data.service';
 
 let BOOK_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/books/book";
 
@@ -10,10 +11,11 @@ let BOOK_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/books/boo
 })
 export class BooksService {
 
-   
+  constructor(private http: HttpClient,private sharedData:SharedDataService ) { }
 
-  constructor(private http: HttpClient) { }
-
+  public isUserAccredited():boolean{
+    return this.sharedData.userAccredited();
+  }
   public saveBook(book:Book ):Observable<Book>{  
     let url = BOOK_SERVICE_URL;
     return this.http.post<Book>(BOOK_SERVICE_URL,book);

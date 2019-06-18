@@ -6,7 +6,6 @@ import { DeleteBookComponent } from '../delete-book/delete-book.component';
 import { AddBookComponent } from '../add-book/add-book.component';
 import { BooksService } from '../books.service';
 import { SharedDataService } from '../../utils/shared-data.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -23,7 +22,7 @@ export class BooksComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog,private bookservice :BooksService,private sharedData:SharedDataService ) {}
+  constructor(public dialog: MatDialog,private bookservice :BooksService) {}
 
   openDialogShowBook(bookId): void {
     const dialogRef = this.dialog.open(ShowBookComponent,{panelClass: 'books-readers-dialog-container'});
@@ -52,7 +51,7 @@ export class BooksComponent implements OnInit {
       this.getData();    
   }
   isAccredited():boolean{ 
-    return this.sharedData.userAccredited();
+    return this.bookservice.isUserAccredited();
   }
   getData() : void{
     this.bookservice.findAllBook().subscribe((books : any)=>{

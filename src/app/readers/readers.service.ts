@@ -3,6 +3,7 @@ import { Reader } from './reader';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../books/book';
+import { SharedDataService } from '../utils/shared-data.service';
 
 let READER_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/readers/reader";
 
@@ -11,8 +12,11 @@ let READER_SERVICE_URL:string = "https://proxymicroservice.herokuapp.com/readers
 })
 export class ReadersService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient ,private sharedData :SharedDataService) { }
 
+  public isUserAccredited():boolean{
+    return this.sharedData.userAccredited();
+  }
   public addReader(reader:Reader):Observable<Reader>{
     let url = READER_SERVICE_URL;
     return this.http.post<Reader>(url,reader);
